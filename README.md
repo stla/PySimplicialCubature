@@ -16,7 +16,7 @@ simplex.
 
 Suppose for example you want to evaluate the following integral:
 
-$$\int\_0^1\int\_0^x\int\_0^y \exp(x + y + z) \text{d}z\,\text{d}y\,\text{d}x.$$
+$$\int\_0^1\int\_0^x\int\_0^y \exp(x + y + z) \text{d}z \text{d}y \text{d}x.$$
 
 ```python
 from pysimplicialcubature.simplicialcubature import integrateOnSimplex
