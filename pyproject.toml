@@ -3,6 +3,7 @@ name = "pysimplicialcubature"
 version = "0.1.0"
 description = "Integration on simplices."
 authors = ["Stéphane Laurent <laurent_step@outlook.fr>"]
+license = "GPL-3.0-only"
 readme = "README.md"
 
 [tool.poetry.dependencies]

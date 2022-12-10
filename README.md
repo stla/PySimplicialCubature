@@ -1,5 +1,9 @@
 # pysimplicialcubature
 
+<!-- badges: start -->
+[![Documentation status](https://readthedocs.org/projects/pysimplicialcubature/badge/)](http://pysimplicialcubature.readthedocs.io)
+<!-- badges: end -->
+
 This package is a port of a part of the R package **SimplicalCubature**, 
 written by John P. Nolan, and which contains R translations of 
 some Matlab and Fortran code written by Alan Genz. In addition it 
