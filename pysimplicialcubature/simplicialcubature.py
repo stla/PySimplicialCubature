@@ -545,6 +545,23 @@ def integrateOnSimplex(
     dictionary
         The value of the integral is in the field `"integral"` of the returned value.
         
+    Examples
+    --------
+    >>> from pysimplicialcubature.simplicialcubature import integrateOnSimplex
+    >>> from math import exp
+    >>> # simplex vertices
+    >>> v1 = [0.0, 0.0, 0.0] 
+    >>> v2 = [1.0, 1.0, 1.0] 
+    >>> v3 = [0.0, 1.0, 1.0] 
+    >>> v4 = [0.0, 0.0, 1.0]
+    >>> # simplex
+    >>> S = [v1, v2, v3, v4]
+    >>> # function to integrate
+    >>> f = lambda x : exp(x[0] + x[1] + x[2])
+    >>> # integral of f on S
+    >>> I_f = integrateOnSimplex(f, S)
+    >>> I_f["integral"]
+
     """
     S = np.asarray(S)
     if len(S.shape) == 2:
@@ -605,7 +622,24 @@ def integratePolynomialOnSimplex(P, S):
     -------
     number
         The value of the integral of the polynomial over the simplex.
-        
+    
+    Examples
+    --------
+    >>> from pysimplicialcubature.simplicialcubature import integratePolynomialOnSimplex
+    >>> from sympy import Poly
+    >>> from sympy.abc import x, y, z
+    >>> # simplex vertices
+    >>> v1 = [0.0, 0.0, 0.0] 
+    >>> v2 = [1.0, 1.0, 1.0] 
+    >>> v3 = [0.0, 1.0, 1.0] 
+    >>> v4 = [0.0, 0.0, 1.0]
+    >>> # simplex
+    >>> S = [v1, v2, v3, v4]
+    >>> # polynomial to integrate
+    >>> P = Poly(x**4 + y + 2*x*y**2 - 3*z, x, y, z, domain = "RR")
+    >>> # integral of P on S
+    >>> integratePolynomialOnSimplex(P, S)
+
     """
     gens = P.gens
     n = len(gens)
