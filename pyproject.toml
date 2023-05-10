@@ -2,7 +2,10 @@
 name = "pysimplicialcubature"
 version = "0.1.0"
 description = "Integration on simplices."
+homepage = "https://github.com/stla/PySimplicialCubature"
 authors = ["Stéphane Laurent <laurent_step@outlook.fr>"]
+documentation = "https://pysimplicialcubature.readthedocs.io/en/latest/"
+keywords = ["integration", "simplex"]
 license = "GPL-3.0-only"
 readme = "README.md"
 
@@ -17,6 +20,9 @@ sphinxcontrib-restbuilder = { version = "^0.3", optional = true }
 
 [tool.poetry.extras]
 docs = ["Sphinx", "sphinx-rtd-theme", "sphinxcontrib-napoleon", "sphinxcontrib-restbuilder"]
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
 
 [build-system]
 requires = ["poetry-core"]
