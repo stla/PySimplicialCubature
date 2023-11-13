@@ -38,7 +38,10 @@ f = lambda x : exp(x[0] + x[1] + x[2])
 # integral of f on S
 I_f = integrateOnSimplex(f, S)
 I_f["integral"]
+# 0.8455356728324119
 ```
+
+The exact value of this integral is ${(e-1)}^3/6 \approx 0.8455356852954753$.
 
 Now let's turn to a polynomial example. You have to define the polynomial with 
 `sympy.Poly`.
@@ -59,6 +62,31 @@ S = [v1, v2, v3, v4]
 P = Poly(x**4 + y + 2*x*y**2 - 3*z, x, y, z, domain = "RR")
 # integral of P on S
 integratePolynomialOnSimplex(P, S)
+# -0.253571428571429
+```
+
+We can do better: by defining the vertex coordinates as fractions, and by 
+taking the field of rational numbers as the domain of the polynomial, we will 
+get the exact value of the integral, without numerical error.
+
+```python
+from pysimplicialcubature.simplicialcubature import integratePolynomialOnSimplex
+from sympy import Poly
+from sympy.abc import x, y, z
+from fractions import Fraction
+
+# simplex vertices
+v1 = [Fraction(0), Fraction(0), Fraction(0)] 
+v2 = [Fraction(1), Fraction(1), Fraction(1)] 
+v3 = [Fraction(0), Fraction(1), Fraction(1)] 
+v4 = [Fraction(0), Fraction(0), Fraction(1)]
+# simplex
+S = [v1, v2, v3, v4]
+# polynomial to integrate
+P = Poly(x**4 + y + 2*x*y**2 - 3*z, x, y, z, domain = "RR")
+# integral of P on S
+integratePolynomialOnSimplex(P, S)
+# -71/280 (= -0.25357142857142856...)
 ```
 
 
