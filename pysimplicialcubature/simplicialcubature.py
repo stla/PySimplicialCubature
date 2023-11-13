@@ -1,7 +1,7 @@
 from math import factorial, cos, acos, sqrt, pi
 import numpy as np
-from sys import exit
-from sympy import Poly
+import sys
+from sympy import Poly, Matrix
 
 
 def _SMPCHC(ND, NF, MXFS, EA, ER, SBS, KEY):
@@ -648,16 +648,17 @@ def integratePolynomialOnSimplex(P, S):
     columns = []
     for i in range(n):
         columns.append(S[i,:] - v)    
-    B = np.column_stack(tuple(columns))
+    B = Matrix(np.column_stack(tuple(columns)))
     dico = {}
     for i in range(n):
         newvar = v[i]
         for j in range(n):
-            newvar = newvar + B[i,j]*Poly(gens[j], gens, domain="RR")
+            newvar = newvar + B[i,j]*Poly(gens[j], gens, domain=P.domain)
         dico[gens[i]] = newvar.as_expr()
     Q = P.subs(dico, simultaneous=True).as_expr().as_poly(gens)
     monoms = Q.monoms()
-    s = 0.0
+    terms = []
     for monom in monoms:
-        s = s + _term(Q, monom)
-    return np.abs(np.linalg.det(B)) / factorial(n) * s
+        terms.append(_term(Q, monom))
+    s = np.sum(terms)
+    return np.abs(B.det()) / factorial(n) * s
