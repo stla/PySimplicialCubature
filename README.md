@@ -83,7 +83,7 @@ v4 = [Fraction(0), Fraction(0), Fraction(1)]
 # simplex
 S = [v1, v2, v3, v4]
 # polynomial to integrate
-P = Poly(x**4 + y + 2*x*y**2 - 3*z, x, y, z, domain = "RR")
+P = Poly(x**4 + y + 2*x*y**2 - 3*z, x, y, z, domain = "QQ")
 # integral of P on S
 integratePolynomialOnSimplex(P, S)
 # -71/280 (= -0.25357142857142856...)
